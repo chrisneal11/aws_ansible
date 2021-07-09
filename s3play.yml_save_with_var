@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  vars:
+   ansible_python_interpreter: /usr/bin/python3
+  tasks:
+  - name: create S3 bucket
+    s3_bucket:
+      name: "awslabbucket1234567890"
+      aws_access_key: "ASIAXHFRE7AKK5BWO6FZ"
+      aws_secret_key: "QwT6SsxMx5c7BrE4h0tbB2heafRI/mGpZ7X3Ivig"
+      security_token: "FwoGZXIvYXdzELj//////////wEaDNsDOs8p1lG/d5rqLSK5AWiIrTkUAK8R4qeQqUGxXF/7AhBGBOhCfBFujX7xgAhaJMH6Ics8LAnmUDSM1zqmkikMt1janxjxIddX/XQtvRn9nqxzhd10iN3hSXNNnF7XV+lBNkjO3yrYKvSJYXcS1+rKu0MgqQIWoVWkm9uvCcPoJ6Mk7p/9XeHa1Bkbt0k7tsDK3eVAWZamTRcSzGIjnjl0LS+Js/7t2H1BLFN4Uc5TIPp0IkRKLAPjlYL8UJEvnbWjOaRNNX9GKIi5oYcGMi3ADemSHUUCrraeSzGwvbisvHpu4QrGC1tiwpY+91gdaZUQ8KGM9QsgGmKNpjQ="
+      policy: "{{ lookup( 'file','bpolicy.json' )}}"
+      state: present
+      region: us-east-1
+      versioning: no
+      tags:
+         name: "awslabbucket1234567890"
+         type: example
